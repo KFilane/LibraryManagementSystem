@@ -168,6 +168,8 @@ public class Register extends javax.swing.JFrame {
                     return true;
                 }
             }
+        } catch (FileNotFoundException e) {
+            return false; // File doesn't exist, so the user can't exist
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -175,30 +177,40 @@ public class Register extends javax.swing.JFrame {
     }
 
     private boolean registerUser(String username, String password) {
+        JSONObject jsonObject;
+        JSONArray users;
+
         try (FileInputStream fis = new FileInputStream("users.json")) {
             JSONTokener tokener = new JSONTokener(fis);
-            JSONObject jsonObject = new JSONObject(tokener);
-            JSONArray users = jsonObject.getJSONArray("users");
-    
-            // Check if username already exists
-            for (int i = 0; i < users.length(); i++) {
-                JSONObject user = users.getJSONObject(i);
-                if (user.getString("username").equals(username)) {
-                    return false; // User already exists
-                }
+            jsonObject = new JSONObject(tokener);
+            users = jsonObject.getJSONArray("users");
+        } catch (FileNotFoundException e) {
+            // If file doesn't exist, create a new JSON structure
+            jsonObject = new JSONObject();
+            users = new JSONArray();
+            jsonObject.put("users", users);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        // Check if username already exists
+        for (int i = 0; i < users.length(); i++) {
+            JSONObject user = users.getJSONObject(i);
+            if (user.getString("username").equals(username)) {
+                return false; // User already exists
             }
-    
-            // Add new user
-            JSONObject newUser = new JSONObject();
-            newUser.put("username", username);
-            newUser.put("password", password);
-            users.put(newUser);
-    
-            // Write back to the file
-            try (FileWriter fileWriter = new FileWriter("users.json")) {
-                fileWriter.write(jsonObject.toString(4)); // Indented for readability
-            }
-    
+        }
+
+        // Add new user
+        JSONObject newUser = new JSONObject();
+        newUser.put("username", username);
+        newUser.put("password", password);
+        users.put(newUser);
+
+        // Write back to the file
+        try (FileWriter fileWriter = new FileWriter("users.json")) {
+            fileWriter.write(jsonObject.toString(4)); // Indented for readability
             return true;
         } catch (IOException e) {
             e.printStackTrace();

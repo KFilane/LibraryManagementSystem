@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Kamohelo.Filane
@@ -46,10 +48,20 @@ public class Dashboard extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+
+                  String title = JOptionPane.showInputDialog(this, "Enter book title:");
+                  String author = JOptionPane.showInputDialog(this, "Enter author:");
+                   String code = JOptionPane.showInputDialog(this, "Enter Code:");
+
+                   
             }
         });
 
         jButton2.setText("REMOVE BOOK");
+
+        String title = JOptionPane.showInputDialog(this, "Enter book title:");
+        String author = JOptionPane.showInputDialog(this, "Enter author:");
+         String code = JOptionPane.showInputDialog(this, "Enter Code:");
 
         jButton3.setText("BOOKS AVAILABLE");
 
@@ -71,6 +83,8 @@ public class Dashboard extends javax.swing.JFrame {
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
+
+                
             }
         });
 
@@ -158,6 +172,8 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

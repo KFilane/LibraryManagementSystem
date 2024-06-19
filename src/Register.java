@@ -129,7 +129,7 @@ public class Register extends javax.swing.JFrame {
         String password = new String(jPasswordField1.getPassword());
 
         if (username.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Username or password cannot be empty");
+            JOptionPane.showMessageDialog(this, "Userna me or password cannot be empty");
             return;
         }
 

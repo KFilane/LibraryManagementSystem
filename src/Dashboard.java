@@ -16,6 +16,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import javax.swing.JOptionPane;
+
 /**
  * Dashboard GUI for managing books and users.
  */
@@ -98,10 +100,20 @@ public class Dashboard extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+
+                  String title = JOptionPane.showInputDialog(this, "Enter book title:");
+                  String author = JOptionPane.showInputDialog(this, "Enter author:");
+                   String code = JOptionPane.showInputDialog(this, "Enter Code:");
+
+                   
             }
         });
 
         jButton2.setText("REMOVE BOOK");
+
+        String title = JOptionPane.showInputDialog(this, "Enter book title:");
+        String author = JOptionPane.showInputDialog(this, "Enter author:");
+         String code = JOptionPane.showInputDialog(this, "Enter Code:");
 
         jButton3.setText("BOOKS AVAILABLE");
 
@@ -123,6 +135,8 @@ public class Dashboard extends javax.swing.JFrame {
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
+
+                
             }
         });
 
@@ -198,7 +212,33 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         pack();
+<<<<<<< HEAD
     }
+=======
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+>>>>>>> 7b2bc57579baf3a8b0e2bec169875a4fd3f2515f
 
     /**
      * Action performed when "ADD ADMIN" button is clicked.

@@ -1,6 +1,5 @@
 {"users": [
     {
-<<<<<<< HEAD
         "password": "admin123",
         "role": "admin",
         "username": "admin123"
@@ -10,14 +9,11 @@
         "username": "Nurudeen"
     },
     {
-=======
->>>>>>> 7b2bc57579baf3a8b0e2bec169875a4fd3f2515f
         "password": "123",
         "username": "123"
     },
     {
         "password": "123",
-<<<<<<< HEAD
         "role": "admin",
         "username": "Kamo"
     },
@@ -27,8 +23,4 @@
         "username": "Sihle"
     },
     {"role": "admin"}
-=======
-        "username": "Kamo"
-    }
->>>>>>> 7b2bc57579baf3a8b0e2bec169875a4fd3f2515f
 ]}

@@ -144,7 +144,6 @@ public class Register extends javax.swing.JFrame {
         String password = new String(jPasswordField1.getPassword());
         String confirmPassword = new String(jPasswordField2.getPassword());
 
-<<<<<<< HEAD
         // Check for empty fields
         if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Username or password fields cannot be empty");
@@ -161,10 +160,6 @@ public class Register extends javax.swing.JFrame {
         if (!password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(this, "Passwords do not match. Please re-enter.");
             jPasswordField2.setText("");
-=======
-        if (username.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Userna me or password cannot be empty");
->>>>>>> 7b2bc57579baf3a8b0e2bec169875a4fd3f2515f
             return;
         }
 

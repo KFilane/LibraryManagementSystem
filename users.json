@@ -1,4 +1,26 @@
-{"users": [{
-    "password": "123",
-    "username": "123"
-}]}
+{"users": [
+    {
+        "password": "admin123",
+        "role": "admin",
+        "username": "admin123"
+    },
+    {
+        "password": "Nurudeen123!",
+        "username": "Nurudeen"
+    },
+    {
+        "password": "123",
+        "username": "123"
+    },
+    {
+        "password": "123",
+        "role": "admin",
+        "username": "Kamo"
+    },
+    {
+        "password": "123",
+        "role": "admin",
+        "username": "Sihle"
+    },
+    {"role": "admin"}
+]}

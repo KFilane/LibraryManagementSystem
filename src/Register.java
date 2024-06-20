@@ -3,7 +3,10 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import javax.swing.*;
+import java.awt.Color;
 import java.io.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Register extends javax.swing.JFrame {
 
@@ -20,6 +23,8 @@ public class Register extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        jPasswordField2 = new javax.swing.JPasswordField(); // Confirm Password field
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton(); // New button for login link
 
@@ -42,7 +47,11 @@ public class Register extends javax.swing.JFrame {
 
         jPasswordField1.setText("");
 
-        jButton1.setText("SUBMIT");
+        jLabel3.setText("Confirm Password:");
+
+        jPasswordField2.setText("");
+
+        jButton1.setText("Register");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -70,11 +79,13 @@ public class Register extends javax.swing.JFrame {
                             .addGap(17, 17, 17)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(username)
-                                .addComponent(jLabel2))
-                            .addGap(86, 86, 86)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3))
+                            .addGap(20, 20, 20)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextField1)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
+                                .addComponent(jPasswordField1)
+                                .addComponent(jPasswordField2, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGap(143, 143, 143)
                             .addComponent(jButton1))
@@ -84,7 +95,7 @@ public class Register extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGap(70, 70, 70)
                             .addComponent(jButton2)))
-                    .addContainerGap(114, Short.MAX_VALUE))
+                    .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,7 +110,11 @@ public class Register extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                    .addGap(31, 31, 31)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                     .addComponent(jButton1)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jButton2)
@@ -127,9 +142,24 @@ public class Register extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         String username = jTextField1.getText();
         String password = new String(jPasswordField1.getPassword());
+        String confirmPassword = new String(jPasswordField2.getPassword());
 
-        if (username.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Username or password cannot be empty");
+        // Check for empty fields
+        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Username or password fields cannot be empty");
+            return;
+        }
+
+        // Password strength check
+        if (!isPasswordStrong(password)) {
+            JOptionPane.showMessageDialog(this, "Password must be at least 8 characters long and contain a mix of letters, numbers, and special characters");
+            return;
+        }
+
+        // Check if passwords match
+        if (!password.equals(confirmPassword)) {
+            JOptionPane.showMessageDialog(this, "Passwords do not match. Please re-enter.");
+            jPasswordField2.setText("");
             return;
         }
 
@@ -218,6 +248,14 @@ public class Register extends javax.swing.JFrame {
         return false;
     }
 
+    private boolean isPasswordStrong(String password) {
+        // Password must be at least 8 characters long and contain at least one digit, one letter, and one special character
+        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -230,8 +268,10 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2; // New button for login link
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3; // Label for confirm password
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2; // Confirm Password field
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel username;
 }

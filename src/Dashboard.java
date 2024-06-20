@@ -210,7 +210,7 @@ public class Dashboard extends javax.swing.JFrame {
         pack();
 <<<<<<< HEAD
     }
-=======
+=
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -242,7 +242,7 @@ public class Dashboard extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
->>>>>>> 7b2bc57579baf3a8b0e2bec169875a4fd3f2515f
+
 
     /**
      * Action performed when "ADD ADMIN" button is clicked.

@@ -1,19 +1,48 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-/**
- *
- * @author Kamohelo.Filane
- */
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 public class UserDashboard extends javax.swing.JFrame {
+
+    private JMenuBar menuBar;
+    private JMenu menu;
+    private JMenuItem logoutMenuItem;
 
     /**
      * Creates new form UserDashboard
      */
     public UserDashboard() {
         initComponents();
+        setupMenu();
+    }
+
+    /**
+     * Sets up the menu bar and menu items.
+     */
+    private void setupMenu() {
+        menuBar = new JMenuBar();
+        menu = new JMenu("Home");
+        logoutMenuItem = new JMenuItem("Logout");
+
+        logoutMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int option = JOptionPane.showConfirmDialog(UserDashboard.this, "Are you sure you want to logout?", "Logout", JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    Login loginForm = new Login();
+                    loginForm.setVisible(true);
+                    dispose();
+                }
+            }
+        });
+
+        menu.add(logoutMenuItem);
+        menuBar.add(menu);
+        setJMenuBar(menuBar);
     }
 
     /**
@@ -30,7 +59,6 @@ public class UserDashboard extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,25 +70,8 @@ public class UserDashboard extends javax.swing.JFrame {
         jButton1.setText("BOOKS AVAILABLE");
 
         jButton2.setText("BORROW BOOK");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         jButton3.setText("RETURN BOOK");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("SUBMIT");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,8 +83,7 @@ public class UserDashboard extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton2)))
                 .addContainerGap(48, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -97,7 +107,6 @@ public class UserDashboard extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jButton4)
                 .addGap(33, 33, 33))
         );
 
@@ -168,7 +177,6 @@ public class UserDashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

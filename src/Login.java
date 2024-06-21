@@ -48,7 +48,7 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordField1.setText("");
 
-        jButton1.setText("SUBMIT");
+        jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -131,10 +131,6 @@ public class Login extends javax.swing.JFrame {
         String password = new String(jPasswordField1.getPassword());
         if (validateLogin(username, password)) {
             JOptionPane.showMessageDialog(this, "Login successful");
-            UserDashboard userForm = new UserDashboard();
-            userForm.setVisible(true);
-            this.dispose();
-
         } else {
             JOptionPane.showMessageDialog(this, "Invalid username or password");
         }
@@ -151,29 +147,29 @@ public class Login extends javax.swing.JFrame {
             JSONTokener tokener = new JSONTokener(fis);
             JSONObject jsonObject = new JSONObject(tokener);
             JSONArray users = jsonObject.getJSONArray("users");
-
-            // Print all users to console for debugging
-            System.out.println("All users:");
+    
             for (int i = 0; i < users.length(); i++) {
-                JSONObject user = users.getJSONObject(i);
-                String storedUsername = user.getString("username");
-                String storedPassword = user.getString("password");
-                System.out.println("Username: " + storedUsername + ", Password: " + storedPassword);
-            }
-
-            // Check if the provided username and password match any user
-            for (int i = 0; i < users.length(); i++) {
-                JSONObject user = users.getJSONObject(i);
-                String storedUsername = user.getString("username");
-                String storedPassword = user.getString("password");
-
-                // Debug: print stored username and password
-                System.out.println("Checking user: " + storedUsername);
-                System.out.println("Stored password: " + storedPassword);
-
+                JSONObject userObj = users.getJSONObject(i);
+                String storedUsername = userObj.getString("username");
+                String storedPassword = userObj.getString("password");
+    
                 if (storedUsername.equals(username) && storedPassword.equals(password)) {
-                    System.out.println("Login successful for user: " + username);
-                    return true;
+                    // Optionally, retrieve role
+                    String role = userObj.optString("role", "user"); 
+    
+                    if ("admin".equals(role)) {
+                        System.out.println("Admin login successful for user: " + username);
+                        Dashboard_with_books_table adminForm = new Dashboard_with_books_table();
+                        adminForm.setVisible(true);
+                        this.dispose();
+                        return true;
+                    } else {
+                        System.out.println("User login successful for user: " + username);
+                        UserDashboard userForm = new UserDashboard();
+                        userForm.setVisible(true);
+                        this.dispose();
+                        return true;
+                    }
                 }
             }
         } catch (IOException e) {
@@ -182,6 +178,7 @@ public class Login extends javax.swing.JFrame {
         System.out.println("Login failed for user: " + username);
         return false;
     }
+    
 
     /**
      * @param args the command line arguments

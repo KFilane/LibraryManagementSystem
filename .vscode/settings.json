@@ -2,6 +2,10 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "c:\\Users\\Nurudeen.Arnold\\Downloads\\json-20210307.jar",
+<<<<<<< HEAD
         "c:\\Users\\Sihle.Mtshini\\Downloads\\json-20210307.jar"
+=======
+        "c:\\Users\\Kamohelo.Filane\\Downloads\\json-20210307.jar"
+>>>>>>> 97a974e8d89916605bc5f99410257c0b80568cbf
     ]
 }

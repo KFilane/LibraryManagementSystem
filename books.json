@@ -1,0 +1,83 @@
+[
+    {
+        "code": 4525,
+        "author": "F. Scott Fitzgerald",
+        "title": "The Great Gatsby",
+        "type": "Fiction"
+    },
+    {
+        "code": 4470,
+        "author": "Harper Lee",
+        "title": "To Kill a Mockingbird",
+        "type": "Fiction"
+    },
+    {
+        "code": 9889,
+        "author": "George Orwell",
+        "title": "1984",
+        "type": "Dystopian"
+    },
+    {
+        "code": 4828,
+        "author": "Jane Austen",
+        "title": "Pride and Prejudice",
+        "type": "Romance"
+    },
+    {
+        "code": 7064,
+        "author": "J.D. Salinger",
+        "title": "The Catcher in the Rye",
+        "type": "Fiction"
+    },
+    {
+        "code": 1084,
+        "author": "J.R.R. Tolkien",
+        "title": "The Hobbit",
+        "type": "Fantasy"
+    },
+    {
+        "code": 5108,
+        "author": "Herman Melville",
+        "title": "Moby-Dick",
+        "type": "Adventure"
+    },
+    {
+        "code": 1161,
+        "author": "Leo Tolstoy",
+        "title": "War and Peace",
+        "type": "Historical Fiction"
+    },
+    {
+        "code": 9783,
+        "author": "Homer",
+        "title": "The Odyssey",
+        "type": "Epic"
+    },
+    {
+        "code": 7559,
+        "author": "James Joyce",
+        "title": "Ulysses",
+        "type": "Modernist"
+    },
+    {
+        "code": "1234",
+        "quantity": 2,
+        "author": "fila",
+        "name": "kamo",
+        "title": "jfdjgk"
+    },
+    {
+        "code": "3445",
+        "quantity": 6,
+        "author": "matho",
+        "name": "sq",
+        "title": "jdfkgjk"
+    },
+    {
+        "code": "6666",
+        "quantity": 6,
+        "author": "john",
+        "name": "Nurudeen",
+        "title": "Harry Potter"
+    }
+]

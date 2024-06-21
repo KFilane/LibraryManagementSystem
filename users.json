@@ -1,14 +1,38 @@
 {"users": [
     {
+<<<<<<< HEAD
+=======
+        "password": "admin123",
+        "role": "admin",
+        "username": "admin123"
+    },
+    {
+        "password": "Nurudeen123!",
+        "username": "Nurudeen"
+    },
+    {
+>>>>>>> 97a974e8d89916605bc5f99410257c0b80568cbf
         "password": "123",
         "username": "123"
     },
     {
         "password": "123",
+<<<<<<< HEAD
         "username": "sihle"
     },
     {
         "password": "123456",
         "username": "Sihle"
     }
+=======
+        "role": "admin",
+        "username": "Kamo"
+    },
+    {
+        "password": "123",
+        "role": "admin",
+        "username": "Sihle"
+    },
+    {"role": "admin"}
+>>>>>>> 97a974e8d89916605bc5f99410257c0b80568cbf
 ]}

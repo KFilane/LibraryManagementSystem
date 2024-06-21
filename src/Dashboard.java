@@ -241,3 +241,4 @@ public class Dashboard extends JFrame {
         java.awt.EventQueue.invokeLater(() -> new Dashboard().setVisible(true));
     }
 }
+

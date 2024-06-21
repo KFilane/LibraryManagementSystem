@@ -11,12 +11,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class Dashboard extends JFrame {
+public class Dashboard_with_books_table extends JFrame {
     private JTable bookDetailsTable;
     private DefaultTableModel tableModel;
     private JSONArray booksArray;
 
-    public Dashboard() {
+    public Dashboard_with_books_table() {
         setTitle("Library Dashboard");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,7 +59,7 @@ public class Dashboard extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Implement add admin functionality here
-                JOptionPane.showMessageDialog(Dashboard.this, "Add Admin functionality not implemented yet.");
+                JOptionPane.showMessageDialog(Dashboard_with_books_table.this, "Add Admin functionality not implemented yet.");
             }
         });
         buttonPanel.add(addAdminButton);
@@ -70,7 +70,7 @@ public class Dashboard extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Implement remove admin functionality here
-                JOptionPane.showMessageDialog(Dashboard.this, "Remove Admin functionality not implemented yet.");
+                JOptionPane.showMessageDialog(Dashboard_with_books_table.this, "Remove Admin functionality not implemented yet.");
             }
         });
         buttonPanel.add(removeAdminButton);
@@ -81,7 +81,7 @@ public class Dashboard extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Implement view administrators functionality here
-                JOptionPane.showMessageDialog(Dashboard.this, "View Administrators functionality not implemented yet.");
+                JOptionPane.showMessageDialog(Dashboard_with_books_table.this, "View Administrators functionality not implemented yet.");
             }
         });
         buttonPanel.add(administratorsButton);
@@ -179,7 +179,7 @@ public class Dashboard extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Dashboard().setVisible(true);
+                new Dashboard_with_books_table().setVisible(true);
             }
         });
     }

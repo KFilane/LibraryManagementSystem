@@ -159,7 +159,7 @@ public class Login extends javax.swing.JFrame {
     
                     if ("admin".equals(role)) {
                         System.out.println("Admin login successful for user: " + username);
-                        Dashboard adminForm = new Dashboard();
+                        Dashboard_with_books_table adminForm = new Dashboard_with_books_table();
                         adminForm.setVisible(true);
                         this.dispose();
                         return true;

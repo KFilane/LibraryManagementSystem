@@ -1,237 +1,135 @@
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONTokener;
-
 import javax.swing.*;
-import java.io.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Register extends javax.swing.JFrame {
+public class Register extends JFrame {
+
+    private JTextField fullNameField;
+    private JTextField addressField;
+    private JTextField phoneField;
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+    private JPasswordField confirmPasswordField;
+    private JCheckBox passwordStrengthCheckbox;
+    private JButton registerButton;
 
     public Register() {
         initComponents();
     }
 
-    @SuppressWarnings("unchecked")
     private void initComponents() {
+        setTitle("User Registration");
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setSize(400, 400);
+        setLocationRelativeTo(null); // Center the window on screen
 
-        jPanel2 = new javax.swing.JPanel();
-        Register = new javax.swing.JLabel();
-        username = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton(); // New button for login link
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(8, 2, 10, 10)); // 8 rows, 2 columns with gaps of 10 pixels
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        // Labels and Text Fields
+        panel.add(new JLabel("Enter Full Name:"));
+        fullNameField = new JTextField();
+        panel.add(fullNameField);
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        panel.add(new JLabel("Enter Address:"));
+        addressField = new JTextField();
+        panel.add(addressField);
 
-        Register.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        Register.setText("REGISTER");
+        panel.add(new JLabel("Enter Phone number:"));
+        phoneField = new JTextField();
+        panel.add(phoneField);
 
-        username.setText("Username: ");
+        panel.add(new JLabel("Enter Username:"));
+        usernameField = new JTextField();
+        panel.add(usernameField);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        panel.add(new JLabel("Enter Password:"));
+        passwordField = new JPasswordField();
+        panel.add(passwordField);
+
+        panel.add(new JLabel("Confirm Password:"));
+        confirmPasswordField = new JPasswordField();
+        panel.add(confirmPasswordField);
+
+        // Password strength checkbox
+        panel.add(new JLabel("Password Strength:"));
+        passwordStrengthCheckbox = new JCheckBox("Follow password requirements");
+        passwordStrengthCheckbox.setEnabled(false); // Initially disabled
+        panel.add(passwordStrengthCheckbox);
+
+        // Register Button
+        registerButton = new JButton("Register");
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                registerButtonActionPerformed(e);
             }
         });
+        panel.add(registerButton);
 
-        jLabel2.setText("Password :");
-
-        jPasswordField1.setText("");
-
-        jButton1.setText("SUBMIT");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        // Set button text using HTML to make it blue and underlined
-        jButton2.setText("<html><font color='blue'><u>Already have an account? Login here</u></font></html>");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(17, 17, 17)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(username)
-                                .addComponent(jLabel2))
-                            .addGap(86, 86, 86)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(143, 143, 143)
-                            .addComponent(jButton1))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(162, 162, 162)
-                            .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(70, 70, 70)
-                            .addComponent(jButton2)))
-                    .addContainerGap(114, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(33, 33, 33)
-                    .addComponent(Register)
-                    .addGap(42, 42, 42)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(username)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(31, 31, 31)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                    .addComponent(jButton1)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jButton2)
-                    .addGap(20, 20, 20))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        pack();
+        add(panel);
+        setVisible(true);
     }
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
+    private void registerButtonActionPerformed(ActionEvent evt) {
+        String fullName = fullNameField.getText();
+        String address = addressField.getText();
+        String phone = phoneField.getText();
+        String username = usernameField.getText();
+        String password = new String(passwordField.getPassword());
+        String confirmPassword = new String(confirmPasswordField.getPassword());
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        String username = jTextField1.getText();
-        String password = new String(jPasswordField1.getPassword());
-
-        if (username.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Username or password cannot be empty");
+        // Basic validation
+        if (fullName.isEmpty() || address.isEmpty() || phone.isEmpty() || username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Registration Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Check if username already exists
-        if (userExists(username)) {
-            JOptionPane.showMessageDialog(this, "Username already exists, please choose another one");
+        // Check if passwords match
+        if (!password.equals(confirmPassword)) {
+            JOptionPane.showMessageDialog(this, "Passwords do not match.", "Registration Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Register user
-        if (registerUser(username, password)) {
-            JOptionPane.showMessageDialog(this, "Registration successful");
-            Login loginForm = new Login();
-            loginForm.setVisible(true);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Failed to register user");
+        // Check password strength
+        boolean isPasswordStrong = isPasswordStrong(password);
+        if (!isPasswordStrong) {
+            JOptionPane.showMessageDialog(this, "Password does not meet requirements.", "Registration Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+
+        // If all checks pass, proceed with registration logic (not implemented here)
+        JOptionPane.showMessageDialog(this, "Registration Successful!", "Registration Success", JOptionPane.INFORMATION_MESSAGE);
+        // Example: Save user details to database or perform further actions
+
+        // Clear fields after registration
+        clearFields();
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        Login loginForm = new Login();
-        loginForm.setVisible(true);
-        this.dispose();
+    private boolean isPasswordStrong(String password) {
+        // Example of password strength criteria: At least 8 characters, including uppercase, lowercase, and digits
+        return password.length() >= 8 &&
+                password.matches(".*[a-z].*") &&
+                password.matches(".*[A-Z].*") &&
+                password.matches(".*\\d.*");
     }
 
-    private boolean userExists(String username) {
-        try (FileInputStream fis = new FileInputStream("users.json")) {
-            JSONTokener tokener = new JSONTokener(fis);
-            JSONObject jsonObject = new JSONObject(tokener);
-            JSONArray users = jsonObject.getJSONArray("users");
-
-            for (int i = 0; i < users.length(); i++) {
-                JSONObject user = users.getJSONObject(i);
-                if (user.getString("username").equals(username)) {
-                    return true;
-                }
-            }
-        } catch (FileNotFoundException e) {
-            return false; // File doesn't exist, so the user can't exist
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
+    private void clearFields() {
+        fullNameField.setText("");
+        addressField.setText("");
+        phoneField.setText("");
+        usernameField.setText("");
+        passwordField.setText("");
+        confirmPasswordField.setText("");
+        passwordStrengthCheckbox.setSelected(false);
     }
 
-    private boolean registerUser(String username, String password) {
-        JSONObject jsonObject;
-        JSONArray users;
-
-        try (FileInputStream fis = new FileInputStream("users.json")) {
-            JSONTokener tokener = new JSONTokener(fis);
-            jsonObject = new JSONObject(tokener);
-            users = jsonObject.getJSONArray("users");
-        } catch (FileNotFoundException e) {
-            // If file doesn't exist, create a new JSON structure
-            jsonObject = new JSONObject();
-            users = new JSONArray();
-            jsonObject.put("users", users);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-
-        // Check if username already exists
-        for (int i = 0; i < users.length(); i++) {
-            JSONObject user = users.getJSONObject(i);
-            if (user.getString("username").equals(username)) {
-                return false; // User already exists
-            }
-        }
-
-        // Add new user
-        JSONObject newUser = new JSONObject();
-        newUser.put("username", username);
-        newUser.put("password", password);
-        users.put(newUser);
-
-        // Write back to the file
-        try (FileWriter fileWriter = new FileWriter("users.json")) {
-            fileWriter.write(jsonObject.toString(4)); // Indented for readability
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new Register().setVisible(true);
+                new Register();
             }
         });
     }
-
-    private javax.swing.JLabel Register;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2; // New button for login link
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel username;
 }
